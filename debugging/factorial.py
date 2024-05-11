@@ -3,19 +3,21 @@ import sys
 
 
 def factorial(n):
-    result = 1
-    while n > 1:
-        result *= n
-        print(f"{result} = {result // n} * {n}")  # 打印每一步的计算过程
-        n = n - 1
-    return result
+    """
+    Calculate the factorial of a given number using recursion.
+
+    Parameters:
+    n (int): A non-negative integer for which the factorial is to be calculated.
+
+    Returns:
+    int: The factorial of the number 'n'.
+    """
+    if n == 0:
+        return 1  # Base case: factorial of 0 is 1
+    else:
+        return n * factorial(n - 1)  # Recursive case: n multiplied by the factorial of n-1
 
 
-if len(sys.argv) > 1:  # 确保有命令行参数输入
-    try:
-        f = factorial(int(sys.argv[1]))
-        print(f"The factorial is {f}")
-    except ValueError:
-        print("Please enter a valid integer.")
-else:
-    print("Please provide an integer as an argument.")
+# Takes an integer from command line argument, calculates its factorial, and prints it.
+f = factorial(int(sys.argv[1]))
+print(f)
